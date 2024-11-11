@@ -1,0 +1,24 @@
+#| echo: false
+# paquetes
+pacman::p_load(
+  flextable,
+  tidyverse
+)
+
+# paleta colorblind-friendly
+pal <- RColorBrewer::brewer.pal(name = "PRGn", n = 6)
+
+
+# Tema personalizado flextable
+tab_style <- function(ft) {
+  ft <- ft |> 
+    flextable()|> 
+    autofit() |> 
+    bg(bg = "#762A83", part = "header") |> 
+    bg(bg = "#E7D4E8", part = "body") |> 
+    color(color = "white", part = "header") |>
+    theme_booktabs() |> 
+    bold(part = "header")
+  
+  return(ft)
+}
